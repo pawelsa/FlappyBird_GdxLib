@@ -2,14 +2,13 @@ package com.pawel.flappybird;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 import com.badlogic.gdx.math.Intersector;
 import com.badlogic.gdx.math.Rectangle;
 
 import java.util.Random;
 
-import static com.pawel.flappybird.Menager.batch;
+import static com.pawel.flappybird.Manager.batch;
 
 /**
  * Created by Pawel on 06.03.2018.
@@ -26,13 +25,10 @@ class Tube {
     private Rectangle upperTubeBound;
     private Rectangle bottomTubeBound;
 
-    private ShapeRenderer shapeRenderer;
-
     Tube() {
 
         setTextures();
         setTubePositionY();
-        shapeRenderer = new ShapeRenderer();
         upperTubeBound = new Rectangle();
         bottomTubeBound = new Rectangle();
     }
@@ -92,7 +88,7 @@ class Tube {
 
     boolean hasCollidedWithBird(final Circle bird) {
 
-        return  Intersector.overlaps(bird, upperTubeBound) || Intersector.overlaps(bird, bottomTubeBound);
+        return Intersector.overlaps(bird, upperTubeBound) || Intersector.overlaps(bird, bottomTubeBound);
     }
 
     Texture getBottomTubeTexture() {

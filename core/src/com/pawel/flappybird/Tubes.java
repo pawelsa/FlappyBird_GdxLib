@@ -3,9 +3,9 @@ package com.pawel.flappybird;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Circle;
 
-import static com.pawel.flappybird.Menager.isAddingPoint;
-import static com.pawel.flappybird.Menager.isGameOn;
-import static com.pawel.flappybird.Menager.points;
+import static com.pawel.flappybird.Manager.isAddingPoint;
+import static com.pawel.flappybird.Manager.isGameOn;
+import static com.pawel.flappybird.Manager.points;
 
 /**
  * Created by Pawel on 06.03.2018.
@@ -68,16 +68,18 @@ class Tubes {
 
     void shouldAddPoint(final Circle bird) {
 
-        if (bird.x + bird.radius * 2 > tubePositionX && bird.x + bird.radius * 2 < tubePositionX + 5) {
+        if (isCrossingMiddleOfTube(bird)) {
 
-            if (!isAddingPoint) {
-                points++;
-                isAddingPoint = true;
-            } else
-                isAddingPoint = false;
-        }else{
-            isAddingPoint=false;
+            points++;
+            isAddingPoint = true;
+        } else {
+            isAddingPoint = false;
         }
+    }
+
+    private boolean isCrossingMiddleOfTube(final Circle bird) {
+
+        return bird.x > tubePositionX && bird.x < tubePositionX + 5 && !isAddingPoint;
     }
 
 }

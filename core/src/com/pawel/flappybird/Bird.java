@@ -1,13 +1,11 @@
 package com.pawel.flappybird;
 
 import com.badlogic.gdx.Gdx;
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.glutils.ShapeRenderer;
 import com.badlogic.gdx.math.Circle;
 
-import static com.pawel.flappybird.Menager.isGameOn;
-import static com.pawel.flappybird.Menager.batch;
+import static com.pawel.flappybird.Manager.isGameOn;
+import static com.pawel.flappybird.Manager.batch;
 
 /**
  * Created by Pawel on 06.03.2018.
@@ -25,11 +23,8 @@ class Bird {
     private boolean flappyState = false;
 
     private Circle circle;
-    ShapeRenderer shapeRenderer;
 
     Bird() {
-
-        shapeRenderer = new ShapeRenderer();
 
         setTextures();
         circle = new Circle();
@@ -62,7 +57,7 @@ class Bird {
 
     void renderBird() {
 
-        circle.set(birdHorizontalPos, birdPos, bird[0].getHeight() / 2);
+        circle.set(birdHorizontalPos + bird[0].getWidth() / 2, birdPos + bird[0].getHeight() / 2, bird[0].getHeight() / 2);
 
         batch.draw(bird[flappyState ? 0 : 1], birdHorizontalPos, birdPos);
         flappyState = !flappyState;

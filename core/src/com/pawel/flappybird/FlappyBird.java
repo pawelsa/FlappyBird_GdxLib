@@ -4,19 +4,19 @@ import com.badlogic.gdx.ApplicationAdapter;
 
 public class FlappyBird extends ApplicationAdapter {
 
-    Menager menager;
+    private Manager manager;
 
     @Override
     public void create() {
 
-        menager = new Menager();
+        manager = new Manager();
     }
 
 
     @Override
     public void render() {
 
-        menager.render();
+        manager.render();
     }
 
 }
